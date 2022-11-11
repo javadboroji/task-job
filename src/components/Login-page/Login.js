@@ -5,6 +5,8 @@ import { Navigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { newContext } from '../Context/Context'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { useNavigate } from "react-router-dom";
+
 import './index.css'
 
 function Login() {
@@ -12,7 +14,7 @@ function Login() {
     const [passwordType, setPasswordType] = useState("password")
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    let navigate = useNavigate();
 
     const [alertLoin, setAlertLoin] = useState(false)
 
@@ -22,13 +24,20 @@ function Login() {
 
     const loginHandle = () => {
         const user = JSON.parse(localStorage.getItem('user'))
-        user.email === email && user.password === password ? setUser(true) : setUser(false); setAlertLoin(true);
-
+       if(user){
+        if(user.email === email && user.password === password){
+            setUser(true)
+          return navigate("/")
+        } else{
+            setUser(false) ;
+            setAlertLoin(true)
+        } 
+    }
     }
     return (
         <Container>
-            {user ? <Navigate to='/' />
-                : alertLoin && (
+            {
+               alertLoin && (
                     <Stack sx={{ width: '100%' }} spacing={2}> <Alert variant="filled" onClose={() => { setAlertLoin(false) }} severity="error"><AlertTitle>Warning</AlertTitle> incrrect emil or password </Alert></Stack>)
             }
             <Row className='d-flex flex-column justify-content-center align-items-center form-bg-wite'>
