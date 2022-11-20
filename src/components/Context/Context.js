@@ -8,7 +8,7 @@ export function AppContext({ children }) {
     const [list, setList] = useState([])
     const [dataPut, setDataPut] = useState([])
     const [filterInp, setFilterInp] = useState("")
-    const [user, setUser] = useState(false)
+    const [userLogin, setUserLogin] = useState(false)
     const [userInfo, setuserInfo] = useState('')
     const [resetReq, setResetReq] = useState(false)
     useEffect(() => {
@@ -29,8 +29,9 @@ export function AppContext({ children }) {
                dataPut,
                setDataPut,
                setFilterInp,
-               filterInp,user,
-                setUser,
+               filterInp,
+               userLogin, 
+               setUserLogin,
                 resetReq,
                 setResetReq,
                 userInfo,

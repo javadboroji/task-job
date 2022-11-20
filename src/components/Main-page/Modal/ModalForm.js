@@ -25,7 +25,7 @@ export default function ModalForm({ data }) {
      setList} = useContext(newContext)
 
   const [inpval, setInpval] = useState(data.title)
-  const [editTitle, setEditTitle] = useState()
+  const [editTitle, setEditTitle] = useState("")
 
   const handleClose = () => {
     setOpen(false);
@@ -63,7 +63,7 @@ export default function ModalForm({ data }) {
             Text in a Modal
           </Typography>
           <div>
-            <TextField id="standard-basic" label="Standard" variant="standard" value={inpval} onChange={(e) => inputHandler(e)} />
+            <TextField id="standard-basic" label="Standard" variant="standard" value={inpval||''} onChange={(e) => inputHandler(e)} />
             <div className='d-flex'>
               <Button variant="contained" color="success" className='m-3' onClick={()=>handlePutValue(data,inpval)}>
                 Record

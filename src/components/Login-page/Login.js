@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import './index.css'
 
 function Login() {
-    const { user, setUser } = useContext(newContext)
+    const { userLogin, setUserLogin } = useContext(newContext)
     const [passwordType, setPasswordType] = useState("password")
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -26,11 +26,12 @@ function Login() {
         const user = JSON.parse(localStorage.getItem('user'))
        if(user){
         if(user.email === email && user.password === password){
-            setUser(true)
+            setUserLogin(true)
           return navigate("/")
         } else{
-            setUser(false) ;
+            setUserLogin(false) ;
             setAlertLoin(true)
+          
         } 
     }
     }

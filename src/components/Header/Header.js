@@ -7,7 +7,7 @@ import { newContext } from '../Context/Context';
 import './index.css'
 
 function Header() {
-  const { list, user, userInfo, setuserInfo } = useContext(newContext)
+  const { list, userLogin, userInfo, setuserInfo } = useContext(newContext)
 
   useEffect(() => {
     setuserInfo(JSON.parse(localStorage.getItem('user')))
@@ -31,9 +31,9 @@ function Header() {
           >
 
             <div className='d-flex mx-3'>
-              {user && <span className="text-light"> {userInfo.email} </span>}
+              
             </div>
-            <Link to='/login' className='text-light tex-dir-none'>Login</Link>
+            {!userLogin&&<Link to='/login' className='text-light tex-dir-none'>Login</Link>}
 
 
           </Nav>
